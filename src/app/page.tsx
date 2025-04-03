@@ -1,3 +1,12 @@
+import BuilderForm from "@/features/builder/BuilderForm";
+import { getRadiatorFamilies } from "@/server/getRadiatorFamilies";
+
 export default function Home() {
-  return <main>Radiator Builder</main>;
+  const radiatorFamilies = getRadiatorFamilies();
+
+  return (
+    <main>
+      <BuilderForm families={radiatorFamilies} />
+    </main>
+  );
 }
