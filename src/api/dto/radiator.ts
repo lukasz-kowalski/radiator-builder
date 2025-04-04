@@ -1,10 +1,10 @@
-interface DefaultProperties {
+interface RawDefaultProperties {
   cost_from: number;
   id: string;
   name: string;
 }
 
-interface Length extends DefaultProperties {
+interface RawLength extends RawDefaultProperties {
   h1_value: string;
   h2_value: string;
   output_dt22_5: string;
@@ -19,26 +19,64 @@ interface Length extends DefaultProperties {
   sections: number;
 }
 
-interface Height extends DefaultProperties {
+interface RawHeight extends RawDefaultProperties {
   height: number;
   label: string;
   sku: string;
-  lengths: Length[];
+  lengths: RawLength[];
 }
 
-interface Depth extends DefaultProperties {
+interface RawDepth extends RawDefaultProperties {
   columns: number;
   depth: number;
-  heights: Height[];
+  heights: RawHeight[];
 }
 
-export interface Radiator extends DefaultProperties {
+export interface RawRadiator extends RawDefaultProperties {
   description: string;
   models: number;
-  depths: Depth[];
+  depths: RawDepth[];
 }
 
 export interface RadiatorFamily {
   id: string;
   name: string;
+}
+
+interface RadiatorItem {
+  length_cost_from: number;
+  length_id: string;
+  length_name: string;
+  h1_value: string;
+  h2_value: string;
+  output_dt22_5: string;
+  output_dt30: string;
+  output_dt40: string;
+  output_dt50: string;
+  oversized: "yes" | "no";
+  pieces: number;
+  pipe_centres: number;
+  price: number;
+  radiator_length: number;
+  sections: number;
+  height_cost_from: number;
+  height_id: string;
+  height_name: string;
+  height: number;
+  label: string;
+  sku: string;
+  depth_cost_from: number;
+  depth_id: string;
+  depth_name: string;
+  columns: number;
+  depth: number;
+}
+
+export interface Radiator {
+  items: RadiatorItem[];
+  radiator_cost_from: number;
+  radiator_id: string;
+  radiator_name: string;
+  radiator_description: string;
+  radiator_models: number;
 }

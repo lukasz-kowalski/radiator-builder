@@ -3,6 +3,7 @@ import path from "path";
 import { unserialize } from "php-serialize";
 
 import { Radiator } from "@/api/dto/radiator";
+import { flatMapRadiators } from "@/server/lib/flatMapRadiators";
 
 let cachedData: any = null;
 
@@ -18,7 +19,9 @@ const loadRadiatorsData = (): Radiator[] | null => {
     );
     const fileContent = fs.readFileSync(filePath, "utf8");
 
-    cachedData = unserialize(fileContent);
+    const unserializedData = unserialize(fileContent);
+
+    cachedData = flatMapRadiators(unserializedData);
     return cachedData;
   } catch (error) {
     console.error("Error during file load:", error);
