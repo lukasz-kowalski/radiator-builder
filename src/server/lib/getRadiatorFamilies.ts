@@ -7,11 +7,9 @@ export const getRadiatorFamilies = () => {
     throw new Error("Couldn't load data");
   }
 
-  console.log(data);
-
   const radiatorFamilies = data.map((item) => ({
-    id: item.radiator_id,
-    name: item.radiator_name,
+    id: item.id,
+    name: item.name,
   }));
 
   return radiatorFamilies;

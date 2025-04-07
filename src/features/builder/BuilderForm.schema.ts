@@ -4,9 +4,9 @@ export const builderSchema = z
   .object({
     radiatorFamily: z.string().optional(),
     radiatorLengthFrom: z
-      .string()
-      .min(1, "Field cannot be empty")
-      .transform((val) => Number(val))
+      .union([z.string(), z.number()])
+      .optional()
+      .transform((val) => (typeof val === "string" ? Number(val) : val))
       .pipe(
         z
           .number()
@@ -16,6 +16,7 @@ export const builderSchema = z
       ),
     radiatorLengthTo: z
       .string()
+      .optional()
       .transform((val) => (val ? Number(val) : undefined))
       .pipe(
         z

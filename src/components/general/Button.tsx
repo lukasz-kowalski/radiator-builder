@@ -6,7 +6,12 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export default function Button(props: PropsWithChildren<Props>) {
-  const { variant = "default", children, ...buttonProps } = props;
+  const {
+    variant = "default",
+    type = "button",
+    children,
+    ...buttonProps
+  } = props;
 
   const buttonClassNames = classNames({
     "border-2": true,
@@ -36,7 +41,7 @@ export default function Button(props: PropsWithChildren<Props>) {
   });
 
   return (
-    <button className={buttonClassNames} {...buttonProps}>
+    <button className={buttonClassNames} {...buttonProps} type={type}>
       {children}
     </button>
   );

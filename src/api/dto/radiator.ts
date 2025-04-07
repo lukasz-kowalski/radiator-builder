@@ -43,7 +43,7 @@ export interface RadiatorFamily {
   name: string;
 }
 
-interface RadiatorItem {
+export interface RadiatorItem {
   length_cost_from: number;
   length_id: string;
   length_name: string;

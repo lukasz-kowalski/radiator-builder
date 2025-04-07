@@ -1,15 +1,15 @@
 import { Radiator, RawRadiator } from "@/api/dto/radiator";
 
 export const flatMapRadiators = (data: RawRadiator[]): Radiator[] => {
-  const radiators = data.map((radiator) => ({
-    radiator_cost_from: radiator.cost_from,
-    radiator_id: radiator.id,
-    radiator_name: radiator.name,
-    radiator_description: radiator.description,
-    radiator_models: radiator.models,
-    items: radiator.depths.flatMap((depth) =>
+  const radiators = data.flatMap((radiator) =>
+    radiator.depths.flatMap((depth) =>
       depth.heights.flatMap((height) =>
-        height.lengths.flatMap((length) => ({
+        height.lengths.map((length) => ({
+          radiator_cost_from: radiator.cost_from,
+          radiator_id: radiator.id,
+          radiator_name: radiator.name,
+          radiator_description: radiator.description,
+          radiator_models: radiator.models,
           length_cost_from: length.cost_from,
           length_id: length.id,
           length_name: length.name,
@@ -38,8 +38,8 @@ export const flatMapRadiators = (data: RawRadiator[]): Radiator[] => {
           columns: depth.columns,
         }))
       )
-    ),
-  }));
+    )
+  );
 
   return radiators;
 };
