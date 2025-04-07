@@ -3,7 +3,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useCallback, useRef, useEffect } from "react";
-import { FixedSizeList as List } from "react-window";
+import { FixedSizeGrid as Grid } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 import InfiniteLoader from "react-window-infinite-loader";
 
@@ -147,6 +147,75 @@ export default function BuilderForm({ families }: Props): React.JSX.Element {
       </form>
 
       {radiators.length > 0 && (
+        <div className="h-[600px] w-full mt-6">
+          <AutoSizer>
+            {({ height, width }) => {
+              const columnCount = 3;
+              const rowHeight = 260;
+              const columnPadding = 8;
+              const columnWidth = width / columnCount - columnPadding;
+              const rowCount = Math.ceil(totalItems / columnCount);
+
+              return (
+                <InfiniteLoader
+                  isItemLoaded={isItemLoaded}
+                  itemCount={totalItems}
+                  loadMoreItems={loadMoreItems}
+                >
+                  {({ onItemsRendered, ref }) => (
+                    <Grid
+                      ref={ref}
+                      height={height}
+                      width={width}
+                      columnCount={columnCount}
+                      columnWidth={columnWidth}
+                      rowCount={rowCount}
+                      rowHeight={rowHeight}
+                      onItemsRendered={({
+                        visibleRowStartIndex,
+                        visibleRowStopIndex,
+                        visibleColumnStartIndex,
+                        visibleColumnStopIndex,
+                      }) => {
+                        const startIndex =
+                          visibleRowStartIndex * columnCount +
+                          visibleColumnStartIndex;
+                        const stopIndex =
+                          visibleRowStopIndex * columnCount +
+                          visibleColumnStopIndex;
+                        onItemsRendered({
+                          overscanStartIndex: startIndex,
+                          overscanStopIndex: stopIndex,
+                          visibleStartIndex: startIndex,
+                          visibleStopIndex: stopIndex,
+                        });
+                      }}
+                    >
+                      {({ rowIndex, columnIndex, style }) => {
+                        const index = rowIndex * columnCount + columnIndex;
+                        const radiator = radiators[index];
+                        if (!radiator) return null;
+
+                        return (
+                          <div
+                            style={style}
+                            key={`cell-${rowIndex}-${columnIndex}`}
+                            className="p-2"
+                          >
+                            <RadiatorCard radiator={radiator} />
+                          </div>
+                        );
+                      }}
+                    </Grid>
+                  )}
+                </InfiniteLoader>
+              );
+            }}
+          </AutoSizer>
+        </div>
+      )}
+
+      {/* {radiators.length > 0 && (
         <div className="h-96 w-full">
           <AutoSizer>
             {({ height, width }) => (
@@ -160,7 +229,7 @@ export default function BuilderForm({ families }: Props): React.JSX.Element {
                     height={height}
                     width={width}
                     itemCount={radiators.length}
-                    itemSize={60}
+                    itemSize={248}
                     onItemsRendered={onItemsRendered}
                     ref={ref}
                   >
@@ -183,7 +252,7 @@ export default function BuilderForm({ families }: Props): React.JSX.Element {
             )}
           </AutoSizer>
         </div>
-      )}
+      )} */}
     </Card>
   );
 }

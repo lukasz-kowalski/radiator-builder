@@ -43,7 +43,12 @@ export interface RadiatorFamily {
   name: string;
 }
 
-export interface RadiatorItem {
+export interface Radiator {
+  radiator_cost_from: number;
+  radiator_id: string;
+  radiator_name: string;
+  radiator_description: string;
+  radiator_models: number;
   length_cost_from: number;
   length_id: string;
   length_name: string;
@@ -70,13 +75,4 @@ export interface RadiatorItem {
   depth_name: string;
   columns: number;
   depth: number;
-}
-
-export interface Radiator {
-  items: RadiatorItem[];
-  radiator_cost_from: number;
-  radiator_id: string;
-  radiator_name: string;
-  radiator_description: string;
-  radiator_models: number;
 }
