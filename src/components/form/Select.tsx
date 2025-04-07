@@ -18,7 +18,7 @@ export default function Select(props: Props) {
     <div className="flex flex-col w-full">
       <div className="h-[20px]" />
       <select
-        className="p-1 border-2 h-10"
+        className="p-1 border-2 h-10 bg-white"
         {...selectProps}
         aria-invalid={!!error}
         aria-errormessage={`error-${selectProps.id}`}

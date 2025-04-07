@@ -15,7 +15,7 @@ export default function Input(props: Props): React.JSX.Element {
       </label>
       <input
         {...inputProps}
-        className="p-1 border-2 h-10"
+        className="p-2 border-2 h-10 bg-white"
         aria-invalid={!!error}
         aria-errormessage={`error-${inputProps.id}`}
       />

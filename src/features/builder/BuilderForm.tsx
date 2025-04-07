@@ -14,6 +14,7 @@ import { RadiatorFamily, Radiator } from "@/api/dto/radiator";
 import RadiatorCard from "@/components/radiator/RadiatorCard";
 import { buildSearchParams } from "@/lib/buildSearchParams";
 import { builderSchema } from "@/features/builder/BuilderForm.schema";
+import Spinner from "@/components/general/Spinner";
 
 interface Props {
   families: RadiatorFamily[];
@@ -146,6 +147,11 @@ export default function BuilderForm({ families }: Props): React.JSX.Element {
         </div>
       </form>
 
+      {isFetching && radiators.length === 0 && <Spinner />}
+      {!isFetching && radiators.length === 0 && (
+        <p>Could not find any radiator. Change filters and try again.</p>
+      )}
+
       {radiators.length > 0 && (
         <div className="h-[600px] w-full mt-6">
           <AutoSizer>
@@ -194,7 +200,6 @@ export default function BuilderForm({ families }: Props): React.JSX.Element {
                       {({ rowIndex, columnIndex, style }) => {
                         const index = rowIndex * columnCount + columnIndex;
                         const radiator = radiators[index];
-                        if (!radiator) return null;
 
                         return (
                           <div
@@ -202,7 +207,11 @@ export default function BuilderForm({ families }: Props): React.JSX.Element {
                             key={`cell-${rowIndex}-${columnIndex}`}
                             className="p-2"
                           >
-                            <RadiatorCard radiator={radiator} />
+                            {radiator ? (
+                              <RadiatorCard radiator={radiator} />
+                            ) : isFetching ? (
+                              <Spinner />
+                            ) : null}
                           </div>
                         );
                       }}
@@ -214,45 +223,6 @@ export default function BuilderForm({ families }: Props): React.JSX.Element {
           </AutoSizer>
         </div>
       )}
-
-      {/* {radiators.length > 0 && (
-        <div className="h-96 w-full">
-          <AutoSizer>
-            {({ height, width }) => (
-              <InfiniteLoader
-                isItemLoaded={isItemLoaded}
-                itemCount={totalItems}
-                loadMoreItems={loadMoreItems}
-              >
-                {({ onItemsRendered, ref }) => (
-                  <List
-                    height={height}
-                    width={width}
-                    itemCount={radiators.length}
-                    itemSize={248}
-                    onItemsRendered={onItemsRendered}
-                    ref={ref}
-                  >
-                    {({ index, style }) => (
-                      <div
-                        style={style}
-                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4"
-                      >
-                        {radiators.map((radiator) => (
-                          <RadiatorCard
-                            key={radiator.length_id}
-                            radiator={radiator}
-                          />
-                        ))}
-                      </div>
-                    )}
-                  </List>
-                )}
-              </InfiniteLoader>
-            )}
-          </AutoSizer>
-        </div>
-      )} */}
     </Card>
   );
 }
