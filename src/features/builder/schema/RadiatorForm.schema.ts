@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const builderSchema = z
+export const radiatorFormSchema = z
   .object({
     radiatorFamily: z.string().optional(),
     radiatorLengthFrom: z

@@ -1,4 +1,4 @@
-import BuilderForm from "@/features/builder/BuilderForm";
+import RadiatorBuilder from "@/features/builder/RadiatorBuilder";
 import { getRadiatorFamilies } from "@/server/lib/getRadiatorFamilies";
 
 export default function Home() {
@@ -6,7 +6,7 @@ export default function Home() {
 
   return (
     <main>
-      <BuilderForm families={radiatorFamilies} />
+      <RadiatorBuilder families={radiatorFamilies} />
     </main>
   );
 }
