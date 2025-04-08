@@ -1,6 +1,8 @@
 import { NextResponse, NextRequest } from "next/server";
 
 import { loadFlattenRadiatorsData } from "@/server/flattenRadiatorsData";
+import { Pagination } from "@/api/dto/response";
+import { Radiator } from "@/api/dto/radiator";
 
 const DEFAULT_PAGE = 1;
 const DEFAULT_PER_PAGE = 20;
@@ -33,13 +35,12 @@ export async function GET(req: NextRequest) {
 
   const paginatedData = filteredData.slice(start, end);
 
-  return NextResponse.json(
-    {
-      data: paginatedData,
-      currentPage: page,
-      totalPages: Math.ceil(filteredData.length / perPage),
-      totalItems: filteredData.length,
-    },
-    { status: 200 }
-  );
+  const response: Pagination<Radiator> = {
+    data: paginatedData,
+    currentPage: page,
+    totalPages: Math.ceil(filteredData.length / perPage),
+    totalItems: filteredData.length,
+  };
+
+  return NextResponse.json(response, { status: 200 });
 }

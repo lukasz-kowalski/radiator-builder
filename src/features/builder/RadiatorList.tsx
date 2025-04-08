@@ -3,7 +3,7 @@ import AutoSizer from "react-virtualized-auto-sizer";
 import InfiniteLoader from "react-window-infinite-loader";
 
 import { Radiator } from "@/api/dto/radiator";
-import RadiatorCard from "@/components/radiator/RadiatorCard";
+import RadiatorCard from "@/features/builder/RadiatorCard";
 import Spinner from "@/components/general/Spinner";
 
 interface Props {
@@ -37,8 +37,8 @@ export default function RadiatorList({
         <div className="h-[600px] w-full mt-6">
           <AutoSizer>
             {({ height, width }) => {
-              const columnCount = 3;
-              const rowHeight = 260;
+              const columnCount = width < 460 ? 1 : width < 640 ? 2 : 3;
+              const rowHeight = width < 460 ? 230 : 260;
               const columnPadding = 8;
               const columnWidth = width / columnCount - columnPadding;
               const rowCount = Math.ceil(totalItems / columnCount);

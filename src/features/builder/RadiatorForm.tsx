@@ -31,7 +31,7 @@ export default function RadiatorForm({ families, onSubmit }: Props) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex items-center gap-4">
+      <div className="flex flex-col gap-1 sm:gap-4 sm:flex-row sm:items-end">
         <Select
           {...register("radiatorFamily")}
           defaultValue=""
@@ -61,7 +61,11 @@ export default function RadiatorForm({ families, onSubmit }: Props) {
 
       <div className="flex justify-end gap-4">
         <Button onClick={() => reset()}>Clear</Button>
-        <Button type="submit" variant="confirm">
+        <Button
+          type="submit"
+          variant="confirm"
+          aria-label="Search for radiators"
+        >
           Search
         </Button>
       </div>

@@ -32,7 +32,7 @@ export default function Select(props: Props) {
           </option>
         ))}
       </select>
-      <div className="h-[1rem]">
+      <div className="h-[3rem]">
         <p id={`error-${selectProps.id}`} className="text-red-600 text-sm">
           {error}
         </p>

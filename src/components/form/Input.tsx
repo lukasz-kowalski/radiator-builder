@@ -19,7 +19,7 @@ export default function Input(props: Props): React.JSX.Element {
         aria-invalid={!!error}
         aria-errormessage={`error-${inputProps.id}`}
       />
-      <div className="h-[1rem]">
+      <div className="h-[3rem]">
         <p id={`error-${inputProps.id}`} className="text-red-600 text-sm">
           {error}
         </p>

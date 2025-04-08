@@ -14,7 +14,7 @@ export default function RadiatorCard({ radiator }: Props) {
           src={`/images/emmeline-i-465mm_${radiator.sections}-sections-preview.jpg`}
           width={80}
           height={110}
-          alt={radiator.length_name}
+          alt={`${radiator.label}, ${radiator.radiator_length} mm, ${radiator.sections} sections`}
           loading="eager"
         />
       </div>
