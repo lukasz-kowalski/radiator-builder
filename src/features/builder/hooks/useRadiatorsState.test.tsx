@@ -8,7 +8,7 @@ jest.mock("@/api/getRadiators");
 
 const mockRadiator = {
   id: "1",
-  radiator_name: "Test Radiator",
+  radiator_name: "Emmeline",
   cost_from: 100,
   radiator_length: 200,
 };
@@ -50,7 +50,7 @@ describe("useRadiatorsState", () => {
 
     act(() => {
       result.current.setFilters({
-        radiatorFamily: "Test",
+        radiatorFamily: "Emmeline",
         radiatorLengthFrom: 100,
         radiatorLengthTo: 1000,
       });
@@ -120,7 +120,7 @@ describe("useRadiatorsState", () => {
 
     act(() => {
       result.current.setFilters({
-        radiatorFamily: "Test",
+        radiatorFamily: "Emmeline",
         radiatorLengthFrom: 100,
         radiatorLengthTo: 1000,
       });

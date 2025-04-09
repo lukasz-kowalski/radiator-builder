@@ -30,12 +30,14 @@ export default function RadiatorForm({ families, onSubmit }: Props) {
   });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form aria-label="form" onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col gap-1 sm:gap-4 sm:flex-row sm:items-end">
         <Select
           {...register("radiatorFamily")}
+          aria-label="Radiator family"
           defaultValue=""
           label="Radiator family"
+          id="radiatorFamily"
           error={errors.radiatorFamily?.message}
           options={families.map((item) => ({
             label: item.name,

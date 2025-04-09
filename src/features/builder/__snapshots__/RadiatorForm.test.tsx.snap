@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RadiatorForm should match the snapshot 1`] = `
+<DocumentFragment>
+  <form
+    aria-label="form"
+  >
+    <div
+      class="flex flex-col gap-1 sm:gap-4 sm:flex-row sm:items-end"
+    >
+      <div
+        class="flex flex-col w-full"
+      >
+        <div
+          class="h-[20px]"
+        />
+        <select
+          aria-errormessage="error-radiatorFamily"
+          aria-invalid="false"
+          aria-label="Radiator family"
+          class="p-1 border-2 h-10 bg-white"
+          id="radiatorFamily"
+          name="radiatorFamily"
+        >
+          <option
+            disabled=""
+            hidden=""
+            selected=""
+            value=""
+          >
+            Radiator family
+          </option>
+          <option
+            value="1"
+          >
+            Family 1
+          </option>
+          <option
+            value="2"
+          >
+            Family 2
+          </option>
+        </select>
+        <div
+          class="h-[3rem]"
+        >
+          <p
+            class="text-red-600 text-sm"
+            id="error-radiatorFamily"
+          />
+        </div>
+      </div>
+      <div
+        class="flex flex-col w-full"
+      >
+        <label
+          class="text-sm"
+          for="radiatorLengthFrom"
+        >
+          Radiator length from (mm)
+        </label>
+        <input
+          aria-errormessage="error-radiatorLengthFrom"
+          aria-invalid="false"
+          class="p-2 border-2 h-10 bg-white"
+          id="radiatorLengthFrom"
+          name="radiatorLengthFrom"
+          type="number"
+        />
+        <div
+          class="h-[3rem]"
+        >
+          <p
+            class="text-red-600 text-sm"
+            id="error-radiatorLengthFrom"
+          />
+        </div>
+      </div>
+      <div
+        class="flex flex-col w-full"
+      >
+        <label
+          class="text-sm"
+          for="radiatorLengthTo"
+        >
+          Radiator length to (mm)
+        </label>
+        <input
+          aria-errormessage="error-radiatorLengthTo"
+          aria-invalid="false"
+          class="p-2 border-2 h-10 bg-white"
+          id="radiatorLengthTo"
+          name="radiatorLengthTo"
+          type="number"
+        />
+        <div
+          class="h-[3rem]"
+        >
+          <p
+            class="text-red-600 text-sm"
+            id="error-radiatorLengthTo"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex justify-end gap-4"
+    >
+      <button
+        class="border-2 rounded-lg px-10 py-3 text-sm font-bold cursor-pointer text-black bg-gray-100 hover:bg-gray-200"
+        type="button"
+      >
+        Clear
+      </button>
+      <button
+        aria-label="Search for radiators"
+        class="border-2 rounded-lg px-10 py-3 text-sm font-bold cursor-pointer text-white bg-blue-700 hover:bg-blue-800"
+        type="submit"
+      >
+        Search
+      </button>
+    </div>
+  </form>
+</DocumentFragment>
+`;
