@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input component should match snapshot 1`] = `
+<div>
+  <div
+    class="flex flex-col w-full"
+  >
+    <label
+      class="text-sm"
+      for="radiatorLength"
+    >
+      Radiator length
+    </label>
+    <input
+      aria-errormessage="error-radiatorLength"
+      aria-invalid="true"
+      class="p-2 border-2 h-10 bg-white"
+      id="radiatorLength"
+      type="number"
+      value="300"
+    />
+    <div
+      class="h-[3rem]"
+    >
+      <p
+        class="text-red-600 text-sm"
+        id="error-radiatorLength"
+      >
+        Required field
+      </p>
+    </div>
+  </div>
+</div>
+`;

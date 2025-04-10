@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select component matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-col w-full"
+  >
+    <div
+      class="h-[20px]"
+    />
+    <select
+      aria-errormessage="error-test-select"
+      aria-invalid="true"
+      class="p-1 border-2 h-10 bg-white"
+      id="test-select"
+    >
+      <option
+        disabled=""
+        hidden=""
+        value=""
+      >
+        Choose an option
+      </option>
+      <option
+        value="1"
+      >
+        Option 1
+      </option>
+      <option
+        value="2"
+      >
+        Option 2
+      </option>
+    </select>
+    <div
+      class="h-[3rem]"
+    >
+      <p
+        class="text-red-600 text-sm"
+        id="error-test-select"
+      >
+        Some error
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
