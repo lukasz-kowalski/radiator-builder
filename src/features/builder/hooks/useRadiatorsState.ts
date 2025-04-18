@@ -48,23 +48,26 @@ export default function useRadiatorsState(): Output {
     if (filter.toString().length > 0) {
       refetch();
     }
-  }, [filter]);
+  }, [filter, refetch]);
 
   const loadMoreItems = useCallback(() => {
     if (!isFetching && hasNextPage) {
       fetchNextPage();
     }
-  }, [isFetching, hasNextPage]);
+  }, [isFetching, hasNextPage, fetchNextPage]);
 
-  const setFilters: SubmitHandler<Inputs> = useCallback(async (data) => {
-    queryClient.setQueryData(["loadMoreRadiators", filter], {
-      pages: [],
-      data: [],
-    });
+  const setFilters: SubmitHandler<Inputs> = useCallback(
+    async (data) => {
+      queryClient.setQueryData(["loadMoreRadiators", filter], {
+        pages: [],
+        data: [],
+      });
 
-    const params = buildSearchParams({ ...data, page: "1" });
-    setFilter(params);
-  }, []);
+      const params = buildSearchParams({ ...data, page: "1" });
+      setFilter(params);
+    },
+    [filter, queryClient]
+  );
 
   return {
     radiators: data?.pages.flatMap((page) => page.data) || [],

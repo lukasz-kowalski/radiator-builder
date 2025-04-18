@@ -4,7 +4,7 @@ import { unserialize } from "php-serialize";
 
 import { RawRadiator } from "@/api/dto/radiator";
 
-let cachedData: any = null;
+let cachedData: RawRadiator[] | null = null;
 
 const loadRadiatorsData = (): RawRadiator[] | null => {
   if (cachedData) return cachedData;
@@ -18,7 +18,7 @@ const loadRadiatorsData = (): RawRadiator[] | null => {
     );
     const fileContent = fs.readFileSync(filePath, "utf8");
 
-    const cachedData = unserialize(fileContent);
+    cachedData = unserialize(fileContent);
 
     return cachedData;
   } catch (error) {

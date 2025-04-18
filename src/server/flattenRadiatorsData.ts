@@ -2,7 +2,7 @@ import { Radiator } from "@/api/dto/radiator";
 import { flatMapRadiators } from "@/server/lib/flatMapRadiators";
 import { loadRadiatorsData } from "@/server/radiatorsData";
 
-let cachedData: any = null;
+let cachedData: Radiator[] | null = null;
 
 const loadFlattenRadiatorsData = (): Radiator[] | null => {
   if (cachedData) return cachedData;

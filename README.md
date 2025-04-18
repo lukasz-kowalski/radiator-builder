@@ -8,7 +8,7 @@ First install dependencies:
 npm install
 ```
 
-Remove .template from .env file name. Add needed variables.
+Remove [`.template`] from .env file name. Add needed variables.
 
 Run the development server next:
 
