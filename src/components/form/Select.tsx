@@ -33,9 +33,11 @@ export default function Select(props: Props) {
         ))}
       </select>
       <div className="h-[3rem]">
-        <p id={`error-${selectProps.id}`} className="text-red-600 text-sm">
-          {error}
-        </p>
+        {error && (
+          <p id={`error-${selectProps.id}`} className="text-red-600 text-sm">
+            {error}
+          </p>
+        )}
       </div>
     </div>
   );

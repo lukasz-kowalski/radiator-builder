@@ -62,7 +62,9 @@ export default function RadiatorForm({ families, onSubmit }: Props) {
       </div>
 
       <div className="flex justify-end gap-4">
-        <Button onClick={() => reset()}>Clear</Button>
+        <Button aria-label="Clear the form" onClick={() => reset()}>
+          Clear
+        </Button>
         <Button
           type="submit"
           variant="confirm"

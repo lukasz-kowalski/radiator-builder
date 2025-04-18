@@ -8,7 +8,10 @@ interface Props {
 
 export default function RadiatorCard({ radiator }: Props) {
   return (
-    <div className="bg-white border-2 p-4 shadow-md">
+    <div
+      className="bg-white border-2 p-4 shadow-md"
+      data-testid="radiator-card"
+    >
       <div className="relative w-[80px] h-[110px] flex justify-self-center mb-2">
         <Image
           src={`/images/emmeline-i-465mm_${radiator.sections}-sections-preview.jpg`}
