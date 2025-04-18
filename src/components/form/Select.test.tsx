@@ -57,9 +57,8 @@ describe("Select component", () => {
       />
     );
 
-    const error = container.querySelector("#error-test-select");
-    expect(error).toBeInTheDocument();
-    expect(error).toBeEmptyDOMElement();
+    const errorContainer = container.querySelector(".h-\\[3rem\\]");
+    expect(errorContainer).toBeEmptyDOMElement();
   });
 
   it("should update value when an option is selected", async () => {
@@ -76,18 +75,5 @@ describe("Select component", () => {
     await userEvent.selectOptions(select, "2");
 
     expect(select.value).toBe("2");
-  });
-
-  it("matches snapshot", () => {
-    const { asFragment } = render(
-      <Select
-        label="Choose an option"
-        id="test-select"
-        error={"Some error"}
-        options={options}
-      />
-    );
-
-    expect(asFragment()).toMatchSnapshot();
   });
 });

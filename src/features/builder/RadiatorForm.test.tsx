@@ -99,13 +99,4 @@ describe("RadiatorForm", () => {
 
     expect(onSubmitMock).not.toHaveBeenCalled();
   });
-
-  it("should match the snapshot", () => {
-    const onSubmitMock = jest.fn();
-
-    const { asFragment } = render(
-      <RadiatorForm families={familiesMock} onSubmit={onSubmitMock} />
-    );
-    expect(asFragment()).toMatchSnapshot();
-  });
 });

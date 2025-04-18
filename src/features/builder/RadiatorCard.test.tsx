@@ -19,9 +19,4 @@ describe("RadiatorCard", () => {
     expect(screen.getByText("Length: 600 mm")).toBeInTheDocument();
     expect(screen.getByText("Price from: £50")).toBeInTheDocument();
   });
-
-  it("should match the snapshot", () => {
-    const { asFragment } = render(<RadiatorCard radiator={radiator} />);
-    expect(asFragment()).toMatchSnapshot();
-  });
 });

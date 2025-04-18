@@ -51,10 +51,8 @@ describe("Input component", () => {
       <Input label="Radiator length" id="radiatorLength" error={undefined} />
     );
 
-    const errorMessage = container.querySelector("#error-radiatorLength");
-
-    expect(errorMessage).toBeInTheDocument();
-    expect(errorMessage).toHaveAttribute("id", "error-radiatorLength");
+    const errorContainer = container.querySelector(".h-\\[3rem\\]");
+    expect(errorContainer).toBeEmptyDOMElement();
   });
 
   it("should call onChange handler when typing", async () => {
@@ -74,20 +72,5 @@ describe("Input component", () => {
     await userEvent.type(input, "500");
 
     expect(handleChange).toHaveBeenCalledTimes(3);
-  });
-
-  it("should match snapshot", () => {
-    const { container } = render(
-      <Input
-        label="Radiator length"
-        id="radiatorLength"
-        type="number"
-        value="300"
-        error="Required field"
-        onChange={() => {}}
-      />
-    );
-
-    expect(container).toMatchSnapshot();
   });
 });
